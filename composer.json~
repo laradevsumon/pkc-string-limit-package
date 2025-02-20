@@ -1,0 +1,16 @@
+{
+    "name": "pkc/word-limit",
+    "description": "Word limit for laravel",
+    "autoload": {
+        "psr-4": {
+            "Pkc\\WordLimit\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Roktim Ariyan",
+            "email": "laradev.sumon@gmail.com"
+        }
+    ],
+    "require": {}
+}
