@@ -13,9 +13,8 @@ class WordLimitServiceProvider extends ServiceProvider
     {
         $this->loadHelpers();
         
-        $this->mergeConfigFrom(
-            __DIR__ . '/../config/wordlimit.php', 'wordlimit'
-        );
+        $configPath = dirname(__DIR__) . '/config/wordlimit.php';
+        $this->mergeConfigFrom($configPath, 'wordlimit');
     }
 
     /**
@@ -23,9 +22,16 @@ class WordLimitServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->publishes([
-            __DIR__ . '/../config/wordlimit.php' => config_path('wordlimit.php'),
-        ], 'wordlimit-config');
+        if ($this->app->runningInConsole()) {
+            $configPath = dirname(__DIR__) . '/config/wordlimit.php';
+            $this->publishes([
+                $configPath => config_path('wordlimit.php'),
+            ], 'wordlimit-config');
+
+            $this->commands([
+                Console\PublishCommand::class,
+            ]);
+        }
     }
 
     /**

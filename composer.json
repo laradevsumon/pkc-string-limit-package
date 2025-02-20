@@ -4,7 +4,10 @@
     "autoload": {
         "psr-4": {
             "Pkc\\WordLimit\\": "./src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "authors": [
         {
@@ -22,5 +25,10 @@
                 "Pkc\\WordLimit\\WordLimitServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "post-package-install": [
+            "@php artisan wordlimit:publish"
+        ]
     }
 }
