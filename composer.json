@@ -1,9 +1,9 @@
 {
     "name": "pkc/word-limit",
-    "description": "Word limit for laravel",
+    "description": "A Laravel package to limit and truncate words in strings with configurable options",
     "autoload": {
         "psr-4": {
-            "Pkc\\WordLimit\\": "src/"
+            "Pkc\\WordLimit\\": "./src/"
         }
     },
     "authors": [

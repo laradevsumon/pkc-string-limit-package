@@ -9,28 +9,30 @@ class WordLimitServiceProvider extends ServiceProvider
     /**
      * Register services.
      */
-    public function register()
+    public function register(): void
     {
-        // Helper function লোড করুন
         $this->loadHelpers();
+        
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/wordlimit.php', 'wordlimit'
+        );
     }
 
     /**
      * Bootstrap services.
      */
-    public function boot()
+    public function boot(): void
     {
-        // Publish Config (Optional)
         $this->publishes([
             __DIR__ . '/../config/wordlimit.php' => config_path('wordlimit.php'),
-        ]);
+        ], 'wordlimit-config');
     }
 
     /**
      * Load the helper functions.
      */
-    protected function loadHelpers()
+    protected function loadHelpers(): void
     {
         require_once __DIR__ . '/helpers.php';
     }
-}
+} 
